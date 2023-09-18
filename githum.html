@@ -7,15 +7,31 @@
   </head>
   <body>
     <h1 id="secret-info">My secret info</h1>
-    <input type="text" name="" id="input-field" />
-    <button id="delete-btn">Delete</button>
+    <input
+      type="text"
+      id="delete-confirm-field"
+      placeholder="Please type delete"
+    />
+    <button id="delete-btn" disabled>Delete</button>
 
     <script>
       document
+        .getElementById("delete-confirm-field")
+        .addEventListener("keyup", function (event) {
+          const text = event.target.value;
+          const deleteBtn = document.getElementById("delete-btn");
+          if (text === "delete") {
+            deleteBtn.removeAttribute("disabled");
+          } else {
+            deleteBtn.setAttribute("disabled", true);
+          }
+        });
+
+      document
         .getElementById("delete-btn")
-        .addEventListener("click", function (event) {
-          const secret = document.getElementById;
-          secret;
+        .addEventListener("click", function () {
+          const secretInfo = document.getElementById("secret-info");
+          secretInfo.style.display = "none";
         });
     </script>
   </body>
